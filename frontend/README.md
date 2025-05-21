@@ -1,29 +1,83 @@
-This is a [RainbowKit](https://rainbowkit.com) + [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org/) project bootstrapped with [`create-rainbowkit`](/packages/create-rainbowkit).
+# Fledge - Secure Crowdfunding on Flare Network
 
-## Getting Started
+![Fledge Landing Page](/demo.png)
 
-First, run the development server:
+Fledge is a decentralized crowdfunding platform built on the Flare Network that provides built-in price protection for contributors. Our platform ensures that your investments are safe even if token prices drop before the funding goal is reached.
 
+## 🌟 Key Features
+
+- **Price Protection**: Automatic refunds if FLR price drops before funding goal is reached
+- **Secure Campaigns**: Built-in price protection for all contributors
+- **Real-time Tracking**: Monitor campaign progress and price movements
+- **User-Friendly Interface**: Intuitive design for both campaign creators and contributors
+
+![Campaigns Page](/campaigns.png)
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn
+- A Web3 wallet (MetaMask, Rainbow, etc.)
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/fledge.git
+cd fledge/frontend
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## 💡 Features in Detail
 
-## Learn More
+### For Campaign Creators
+- Create campaigns with customizable funding goals
+- Set campaign duration and beneficiary address
+- Monitor campaign progress in real-time
+- Automatic price protection for contributors
 
-To learn more about this stack, take a look at the following resources:
+### For Contributors
+- Browse active campaigns
+- Contribute with built-in price protection
+- Track campaign progress and price movements
+- Automatic refunds if price protection is triggered
 
-- [RainbowKit Documentation](https://rainbowkit.com) - Learn how to customize your wallet connection flow.
-- [wagmi Documentation](https://wagmi.sh) - Learn how to interact with Ethereum.
-- [Next.js Documentation](https://nextjs.org/docs) - Learn how to build a Next.js application.
+## 🛠️ Tech Stack
 
-You can check out [the RainbowKit GitHub repository](https://github.com/rainbow-me/rainbowkit) - your feedback and contributions are welcome!
+- **Frontend**: Next.js, React, TailwindCSS
+- **Web3**: RainbowKit, wagmi
+- **Blockchain**: Flare Network (Coston2 testnet & Mainnet)
+- **Styling**: Framer Motion for animations
 
-## Deploy on Vercel
+## 🔗 Useful Links
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [Flare Network Documentation](https://docs.flare.network)
+- [RainbowKit Documentation](https://rainbowkit.com)
+- [wagmi Documentation](https://wagmi.sh)
+- [Next.js Documentation](https://nextjs.org/docs)
 
-Check out the [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 🚀 Deployment
+
+The application is configured for easy deployment on Vercel:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/fledge)
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
