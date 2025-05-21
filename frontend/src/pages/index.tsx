@@ -1,0 +1,240 @@
+'use client';
+
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Canvas } from '@react-three/fiber';
+import { Stars, Float } from '@react-three/drei';
+import { useRef } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { 
+  Sparkles, 
+  Zap, 
+  Shield, 
+  LineChart, 
+  ArrowRight,
+  Wallet,
+  Lock,
+  Globe,
+  HandCoins
+} from 'lucide-react';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
+function Scene() {
+  return (
+    <>
+      <color attach="background" args={['#000']} />
+      <ambientLight intensity={0.5} />
+      <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.5}>
+        <Stars 
+          radius={100} 
+          depth={50} 
+          count={5000} 
+          factor={4} 
+          saturation={0} 
+          fade 
+          speed={1}
+        />
+      </Float>
+    </>
+  );
+}
+
+const features = [
+  {
+    name: 'Price Protection',
+    description: 'Automatic refunds if FLR price drops before funding goal is reached, protecting your investment.',
+    icon: <Shield className="w-6 h-6" />,
+    path: '/campaigns',
+  },
+  {
+    name: 'Create Campaign',
+    description: 'Launch your crowdfunding campaign with built-in price protection for your contributors.',
+    icon: <Zap className="w-6 h-6" />,
+    path: '/create',
+  },
+  {
+    name: 'Track Progress',
+    description: 'Monitor campaign progress, contributions, and price movements in real-time.',
+    icon: <LineChart className="w-6 h-6" />,
+    path: '/campaigns',
+  },
+];
+
+export default function Home() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
+  return (
+    <div ref={containerRef} className="relative min-h-screen overflow-hidden">
+      {/* Three.js Background */}
+      <div className="fixed inset-0 z-0">
+        <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
+          <Scene />
+        </Canvas>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10">
+        {/* Hero Section */}
+        <motion.div 
+          style={{ y, opacity }}
+          className="min-h-screen flex flex-col items-center justify-center px-4"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center max-w-4xl mx-auto"
+          >
+            <motion.div
+              initial={{ scale: 0.5 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="mb-8"
+            >
+              <HandCoins className="w-24 h-24 text-pink-500 mx-auto" />
+            </motion.div>
+            <h1 className="text-5xl md:text-7xl font-bold mb-8 pb-4 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-500">
+              Fledge
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-100 mb-12 max-w-2xl mx-auto">
+              Crowdfunding with Built-in Price Protection. Raise funds safely on <span className="text-pink-400 text-3xl font-bold">Flare Network</span> with automatic refunds if token prices drop.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <ConnectButton />
+              <Link 
+                href="/campaigns"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-pink-500 text-white hover:bg-pink-600 transition-colors"
+              >
+                Explore Campaigns
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link 
+                href="/create"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-pink-500 text-pink-500 hover:bg-pink-50 transition-colors"
+              >
+                Create Campaign
+                <Zap className="w-4 h-4" />
+              </Link>
+            </div>
+          </motion.div>
+        </motion.div>
+
+        {/* Features Section */}
+        <div className="py-20 px-4 bg-white/90 backdrop-blur-sm relative overflow-hidden">
+          <div className="absolute inset-0 opacity-30 pointer-events-none">
+            <div className="absolute -right-1/18 md:-top-1/10 top-1/40 w-[400px] h-[400px] transform rotate-18">
+              <Image
+                src="/f.png"
+                alt="Flare Network"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+          </div>
+          <div className="max-w-7xl mx-auto relative">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl font-bold mb-4 text-pink-600">Safe & Secure Crowdfunding</h2>
+              <p className="text-xl text-gray-600">Protect your investments with our innovative price protection system</p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {features.map((feature, index) => (
+                <motion.div
+                  key={feature.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.05 }}
+                  className="group relative"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-500 rounded-2xl blur opacity-0 group-hover:opacity-20 transition-opacity" />
+                  <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl p-8 border border-pink-100 shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+                    <div className="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center mb-6 text-pink-600">
+                      {feature.icon}
+                    </div>
+                    <h3 className="text-xl font-semibold mb-4 text-pink-600">{feature.name}</h3>
+                    <p className="text-gray-600 mb-6 flex-grow">{feature.description}</p>
+                    <Link 
+                      href={feature.path}
+                      className="inline-flex items-center gap-2 text-pink-600 hover:text-pink-700 transition-colors px-4 py-2 rounded-full border border-pink-500 hover:bg-pink-50"
+                    >
+                      Get Started
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Stats Section */}
+        <div className="py-20 px-4 bg-gradient-to-b from-white/90 to-pink-100/80 backdrop-blur-lg">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                { label: 'Protected Value', value: '$1.2M+' },
+                { label: 'Active Campaigns', value: '50+' },
+                { label: 'Successful Refunds', value: '100%' },
+              ].map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                  className="text-center"
+                >
+                  <div className="text-4xl font-bold text-pink-600 mb-2">{stat.value}</div>
+                  <div className="text-gray-600">{stat.label}</div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="py-20 px-4 bg-gradient-to-b from-pink-100/80 to-white backdrop-blur-lg">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-4xl font-bold mb-6 text-pink-600">Ready to Start Your Campaign?</h2>
+              <p className="text-xl text-gray-600 mb-8">
+                Create your campaign with built-in price protection and give your contributors peace of mind
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <ConnectButton />
+                <Link 
+                  href="/create"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-pink-500 text-white hover:bg-pink-600 transition-colors"
+                >
+                  Create Campaign
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
