@@ -23,6 +23,6 @@ const coston2: Chain = {
 export const config = getDefaultConfig({
   appName: 'SafeRaise',
   projectId: 'YOUR_PROJECT_ID',
-  chains: [flare, coston2],
+  chains: [coston2, flare],
   ssr: true
 });
