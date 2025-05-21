@@ -1,6 +1,6 @@
 # Fledge - Secure Crowdfunding on Flare Network
 
-![Fledge Landing Page](/demo.png)
+![Fledge Landing Page](/frontend/public/demo.png)
 
 Fledge is a decentralized crowdfunding platform built on the Flare Network that provides built-in price protection for contributors. Our platform ensures that your investments are safe even if token prices drop before the funding goal is reached.
 
@@ -11,7 +11,7 @@ Fledge is a decentralized crowdfunding platform built on the Flare Network that 
 - **Real-time Tracking**: Monitor campaign progress and price movements
 - **User-Friendly Interface**: Intuitive design for both campaign creators and contributors
 
-![Campaigns Page](/campaigns.png)
+![Campaigns Page](/frontend/public/campaigns.png)
 
 ## 🚀 Getting Started
 
