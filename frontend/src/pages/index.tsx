@@ -98,7 +98,7 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="mb-8"
             >
-              <HandCoins className="w-24 h-24 text-pink-500 mx-auto" />
+              <HandCoins className="w-24 h-24 text-pink-100 mx-auto" />
             </motion.div>
             <h1 className="text-5xl md:text-7xl font-bold mb-8 pb-4 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-500">
               Fledge
