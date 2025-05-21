@@ -238,7 +238,7 @@ export function CampaignCard({ address, onContribute, onFinalize }: CampaignCard
           <div className="flex items-center gap-2">
             <button
               onClick={() => setIsDetailsModalOpen(true)}
-              className="text-pink-500"
+              className="text-pink-500 hover:text-pink-600 transition-colors cursor-pointer"
             >
               <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -283,15 +283,20 @@ export function CampaignCard({ address, onContribute, onFinalize }: CampaignCard
 
         {/* Progress Bar */}
         <div className="space-y-2">
-          <div className="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
+          <div className="w-full bg-gray-100 rounded-full h-3 overflow-hidden relative">
             <div
-              className="bg-gradient-to-r from-pink-500 to-pink-600 h-3 rounded-full transition-all duration-500 ease-out"
+              className="bg-gradient-to-r from-pink-500 via-purple-500 to-pink-600 h-3 rounded-full transition-all duration-500 ease-out relative"
               style={{ width: `${progressPercentage}%` }}
-            ></div>
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent animate-shimmer"></div>
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-r from-pink-500/20 to-purple-500/20 blur-sm"></div>
           </div>
           <div className="flex justify-between text-sm">
             <span className="text-gray-600">Progress</span>
-            <span className="font-bold text-gray-900">{progressPercentage.toFixed(1)}%</span>
+            <span className="font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
+              {progressPercentage.toFixed(1)}%
+            </span>
           </div>
         </div>
 
@@ -300,7 +305,7 @@ export function CampaignCard({ address, onContribute, onFinalize }: CampaignCard
             <span className="text-gray-600 block mb-1">Beneficiary</span>
             <button
               onClick={() => setIsBeneficiaryModalOpen(true)}
-              className="font-mono text-xs md:text-sm truncate block max-w-[200px] text-pink-600 hover:text-pink-800 hover:underline transition-colors duration-200"
+              className="font-mono text-xs md:text-sm truncate block max-w-[200px] text-pink-600 hover:text-pink-800 hover:underline transition-colors duration-200 cursor-pointer"
               title="Click to view full address"
             >
               {formatAddress(beneficiary)}
@@ -317,7 +322,7 @@ export function CampaignCard({ address, onContribute, onFinalize }: CampaignCard
         {!campaignClosed && !isExpired && !fundingGoalReached && (
           <button
             onClick={() => setIsModalOpen(true)}
-            className="w-full px-4 py-2 bg-gradient-to-r from-pink-500 to-pink-600 text-white rounded-lg font-medium shadow-md"
+            className="w-full px-4 py-2 bg-gradient-to-r from-pink-500 to-pink-600 text-white rounded-lg font-medium shadow-md hover:from-pink-600 hover:to-pink-700 transition-all duration-200 cursor-pointer"
           >
             Contribute Now
           </button>
@@ -327,7 +332,7 @@ export function CampaignCard({ address, onContribute, onFinalize }: CampaignCard
           <button
             onClick={handleFinalize}
             disabled={isLoading || isSendingFinalize || isConfirmingFinalize}
-            className="w-full px-4 py-2 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg font-medium shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full px-4 py-2 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg font-medium shadow-md hover:from-green-600 hover:to-green-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
           >
             {isSendingFinalize ? 'Sending...' :
              isConfirmingFinalize ? 'Confirming...' :
@@ -350,7 +355,7 @@ export function CampaignCard({ address, onContribute, onFinalize }: CampaignCard
               <h3 className="text-2xl font-bold text-gray-900">Campaign Details</h3>
               <button
                 onClick={() => setIsDetailsModalOpen(false)}
-                className="text-gray-400"
+                className="text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -374,7 +379,7 @@ export function CampaignCard({ address, onContribute, onFinalize }: CampaignCard
                     href={`https://coston2-explorer.flare.network/address/${address}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-pink-600 hover:text-pink-800"
+                    className="text-pink-600 hover:text-pink-800 cursor-pointer"
                     title="View on Explorer"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -393,7 +398,7 @@ export function CampaignCard({ address, onContribute, onFinalize }: CampaignCard
                     href={`https://coston2-explorer.flare.network/address/${beneficiary}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-pink-600 hover:text-pink-800"
+                    className="text-pink-600 hover:text-pink-800 cursor-pointer"
                     title="View on Explorer"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -458,7 +463,7 @@ export function CampaignCard({ address, onContribute, onFinalize }: CampaignCard
               <div className="flex gap-3 pt-4">
                 <button
                   onClick={() => setIsDetailsModalOpen(false)}
-                  className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-all duration-200"
+                  className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-all duration-200 cursor-pointer"
                 >
                   Close
                 </button>
@@ -468,7 +473,7 @@ export function CampaignCard({ address, onContribute, onFinalize }: CampaignCard
                       setIsDetailsModalOpen(false);
                       setIsModalOpen(true);
                     }}
-                    className="flex-1 px-4 py-2 bg-gradient-to-r from-pink-500 to-pink-600 text-white rounded-lg hover:from-pink-600 hover:to-pink-700 transition-all duration-200"
+                    className="flex-1 px-4 py-2 bg-gradient-to-r from-pink-500 to-pink-600 text-white rounded-lg hover:from-pink-600 hover:to-pink-700 transition-all duration-200 cursor-pointer"
                   >
                     Contribute Now
                   </button>
@@ -493,7 +498,7 @@ export function CampaignCard({ address, onContribute, onFinalize }: CampaignCard
               <h3 className="text-xl font-bold text-gray-900">Contribute to Campaign</h3>
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="text-gray-400"
+                className="text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -529,14 +534,14 @@ export function CampaignCard({ address, onContribute, onFinalize }: CampaignCard
               <div className="flex gap-3">
                 <button
                   onClick={() => setIsModalOpen(false)}
-                  className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-all duration-200"
+                  className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-all duration-200 cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={handleContribute}
                   disabled={isLoading || isSendingContribution || isConfirmingContribution}
-                  className="flex-1 px-4 py-2 bg-gradient-to-r from-pink-500 to-pink-600 text-white rounded-lg hover:from-pink-600 hover:to-pink-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex-1 px-4 py-2 bg-gradient-to-r from-pink-500 to-pink-600 text-white rounded-lg hover:from-pink-600 hover:to-pink-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                 >
                   {isSendingContribution ? 'Sending...' :
                    isConfirmingContribution ? 'Confirming...' :
@@ -562,7 +567,7 @@ export function CampaignCard({ address, onContribute, onFinalize }: CampaignCard
               <h3 className="text-xl font-bold text-gray-900">Beneficiary Address</h3>
               <button
                 onClick={() => setIsBeneficiaryModalOpen(false)}
-                className="text-gray-400"
+                className="text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -579,14 +584,14 @@ export function CampaignCard({ address, onContribute, onFinalize }: CampaignCard
                 href={`https://coston2-explorer.flare.network/address/${beneficiary}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full px-4 py-2 bg-gradient-to-r from-pink-500 to-pink-600 text-white text-center rounded-lg hover:from-pink-600 hover:to-pink-700 transition-all duration-200"
+                className="block w-full px-4 py-2 bg-gradient-to-r from-pink-500 to-pink-600 text-white text-center rounded-lg hover:from-pink-600 hover:to-pink-700 transition-all duration-200 cursor-pointer"
               >
                 View on Explorer
               </a>
 
               <button
                 onClick={() => setIsBeneficiaryModalOpen(false)}
-                className="w-full px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-all duration-200"
+                className="w-full px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-all duration-200 cursor-pointer"
               >
                 Close
               </button>
@@ -615,8 +620,21 @@ const styles = `
   }
 }
 
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 .animate-slide-down {
   animation: slide-down 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
 }
 `;
 
