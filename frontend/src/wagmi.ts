@@ -24,9 +24,5 @@ export const config = getDefaultConfig({
   appName: 'SafeRaise',
   projectId: 'YOUR_PROJECT_ID',
   chains: [flare, coston2],
-  ssr: true,
-  autoConnect: false,
-  walletConnectParameters: {
-    showQrModal: false,
-  },
+  ssr: true
 });

@@ -200,37 +200,29 @@ export function useCrowdfundingCampaign(campaignAddress?: Address) {
 
   const campaignInfo: FormattedCampaignInfo | undefined = useMemo(() => {
     if (!rawCampaignInfo) {
-      // console.log(`HOOK_CAMPAIGN (${campaignAddress}): rawCampaignInfo is undefined.`);
       return undefined;
     }
 
     const tuple = rawCampaignInfo as CampaignInfoTuple;
 
-    // tuple[2] is fundingGoalInUsdScaled from the contract (e.g., 100 * 10^18)
     const contractScaledGoal = tuple[2];
-    // This formats the on-chain scaled bigint into a human-readable string (e.g., "100.00")
     const humanReadableUsdGoal = formatUnits(contractScaledGoal, 18);
-
-    // console.log(`HOOK_CAMPAIGN (${campaignAddress}): Raw contractScaledGoal (tuple[2]): ${contractScaledGoal?.toString()}`);
-    // console.log(`HOOK_CAMPAIGN (${campaignAddress}): Derived humanReadableUsdGoal: "${humanReadableUsdGoal}"`);
 
     return {
       owner: tuple[0],
       beneficiary: tuple[1],
-      fundingGoalInUsdScaled: contractScaledGoal, // Store the raw on-chain scaled value
+      fundingGoalInUsdScaled: contractScaledGoal,
       deadline: tuple[3],
       totalFundsRaisedWei: tuple[4],
       fundingGoalReached: tuple[5],
       campaignClosed: tuple[6],
       title: tuple[7],
-      // No description or imageUrl if not returned by getCampaignInfo
 
-      // Derived formatted strings:
-      fundingGoalUsdString: humanReadableUsdGoal, // This is for UI display
+      fundingGoalUsdString: humanReadableUsdGoal,
       totalFundsRaisedFlrString: formatUnits(tuple[4], 18),
       deadlineDate: new Date(Number(tuple[3]) * 1000),
     };
-  }, [rawCampaignInfo, campaignAddress]); // campaignAddress added to dep array for logging context
+  }, [rawCampaignInfo]); // Removed campaignAddress from dependencies
 
   const ftsoPrice: FtsoPriceData | undefined = useMemo(() => {
     if (!ftsoPriceDataRaw) return undefined;
