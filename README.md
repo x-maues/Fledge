@@ -6,7 +6,7 @@ Fledge is a decentralized crowdfunding platform built on the Flare Network that 
 
 ## 🌟 Key Features
 
-- **Price Protection**: Automatic refunds if FLR price drops before funding goal is reached
+- **Price Protection**: Rebalance funds and option for contributors to withdraw funds if token price falls
 - **Secure Campaigns**: Built-in price protection for all contributors
 - **Real-time Tracking**: Monitor campaign progress and price movements
 - **User-Friendly Interface**: Intuitive design for both campaign creators and contributors
