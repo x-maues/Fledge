@@ -25,6 +25,7 @@
     "next": "15.3.2",
     "postcss": "^8.5.3",
     "react": "^19.0.0",
+    "react-confetti": "^6.4.0",
     "react-dom": "^19.0.0",
     "react-hot-toast": "^2.5.2",
     "recharts": "^2.15.3",

@@ -12,7 +12,7 @@ function CampaignCardWrapper({ address, onRefresh }: { address: `0x${string}`, o
   const { contribute } = useCrowdfundingCampaign(address);
   
   return (
-    <div className="transform transition-all duration-300 hover:scale-105">
+    <div>
       <CampaignCard
         address={address}
         onContribute={async (amount) => {
