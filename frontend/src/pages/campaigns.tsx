@@ -16,11 +16,25 @@ function CampaignCardWrapper({ address, onRefresh }: { address: `0x${string}`, o
       <CampaignCard
         address={address}
         onContribute={async (amount) => {
-          await contribute(amount);
-          await onRefresh();
+          try {
+            await contribute(amount);
+            await onRefresh();
+          } catch (error: any) {
+            // Handle user rejection or other errors gracefully
+            if (error.message?.includes('User rejected') || error.message?.includes('User denied')) {
+              console.log('Transaction was rejected by user');
+              return;
+            }
+            // For other errors, you might want to show a notification
+            console.error('Error contributing to campaign:', error);
+          }
         }}
         onFinalize={async () => {
-          await onRefresh();
+          try {
+            await onRefresh();
+          } catch (error) {
+            console.error('Error finalizing campaign:', error);
+          }
         }}
       />
     </div>
@@ -59,7 +73,11 @@ export default function CampaignsPage() {
     
     useEffect(() => {
       if (campaignInfo) {
-        const isCompleted = campaignInfo.campaignClosed || campaignInfo.fundingGoalReached;
+        const currentTime = Math.floor(Date.now() / 1000); // Current time in seconds
+        const isCompleted = campaignInfo.campaignClosed || 
+                          campaignInfo.fundingGoalReached || 
+                          currentTime > campaignInfo.deadline;
+        
         if (!processedAddresses.current.has(address)) {
           processedAddresses.current.add(address);
           onStatus(isCompleted);

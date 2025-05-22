@@ -40,23 +40,24 @@ function Scene() {
 }
 
 const features = [
+  
   {
-    name: 'Price Protection',
-    description: 'Automatic refunds if FLR price drops before funding goal is reached, protecting your investment.',
-    icon: <Shield className="w-6 h-6" />,
-    path: '/campaigns',
-  },
-  {
-    name: 'Create Campaign',
+    name: 'Launch a Campaign',
     description: 'Launch your crowdfunding campaign with built-in price protection for your contributors.',
     icon: <Zap className="w-6 h-6" />,
     path: '/create',
   },
   {
-    name: 'Track Progress',
+    name: 'Make a difference',
     description: 'Monitor campaign progress, contributions, and price movements in real-time.',
     icon: <LineChart className="w-6 h-6" />,
     path: '/campaigns',
+  },
+  {
+    name: 'FTSO Integration',
+    description: 'Leverages Flare Time Series Oracle (FTSO) for real-time USD price feeds, ensuring accurate campaign funding goals.',
+    icon: <Shield className="w-6 h-6" />,
+    path: '/about',
   },
 ];
 
@@ -104,7 +105,7 @@ export default function Home() {
               Fledge
             </h1>
             <p className="text-xl md:text-2xl text-gray-100 mb-12 max-w-2xl mx-auto">
-              Crowdfunding with Built-in Price Protection. Raise funds safely on <span className="text-pink-400 text-3xl font-bold">Flare Network</span> with automatic refunds if token prices drop.
+            Smart Crowdfunding: USD Goals, FLR Contributions.<br/> Raise funds safely on <span className="text-pink-400 text-3xl font-bold">Flare   </span> with dynamic goal tracking
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <ConnectButton />
@@ -167,7 +168,7 @@ export default function Home() {
                     <div className="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center mb-6 text-pink-600">
                       {feature.icon}
                     </div>
-                    <h3 className="text-xl font-semibold mb-4 text-pink-600">{feature.name}</h3>
+                    <h3 className="text-xl font-bold mb-4 text-pink-600">{feature.name}</h3>
                     <p className="text-gray-600 mb-6 flex-grow">{feature.description}</p>
                     <Link 
                       href={feature.path}
@@ -256,6 +257,38 @@ export default function Home() {
                 </svg>
                 Maues
               </a>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Network Information Footer */}
+        <div className="py-12 px-4 bg-gradient-to-b from-pink-50 to-white backdrop-blur-lg">
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <h2 className="text-2xl font-bold mb-8 text-gray-600">Network Information</h2>
+              <div className="grid md:grid-cols-3 gap-8">
+                <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 border border-pink-100 shadow-sm">
+                  <h3 className="text-lg font-semibold text-pink-600 mb-2">Network</h3>
+                  <p className="text-gray-600">Coston2 Testnet</p>
+                </div>
+                <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 border border-pink-100 shadow-sm">
+                  <h3 className="text-lg font-semibold text-pink-600 mb-2">RPC URL</h3>
+                  <p className="text-gray-600 break-all">https://coston2-api.flare.network/ext/C/rpc</p>
+                </div>
+                <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 border border-pink-100 shadow-sm">
+                  <h3 className="text-lg font-semibold text-pink-600 mb-2">Factory Contract</h3>
+                  <p className="text-gray-600 break-all">0xc1EAF17ebCD0ef0287E67f992a892A4e727e96c3</p>
+                </div>
+              </div>
+              <div className="mt-8 text-sm text-gray-500">
+                <p>Make sure to connect to the correct network to interact with the platform</p>
+              </div>
             </motion.div>
           </div>
         </div>
