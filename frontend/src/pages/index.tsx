@@ -149,7 +149,7 @@ export default function Home() {
               className="text-center mb-16"
             >
               <h2 className="text-4xl font-bold mb-4 text-pink-600">Safe & Secure Crowdfunding</h2>
-              <p className="text-xl text-gray-600">Protect your investments with our innovative price protection system</p>
+              <p className="text-xl text-gray-600">Transparent and dynamic crowdfunding secured by Blockchain Technology</p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
