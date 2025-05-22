@@ -28,7 +28,7 @@ export default function About() {
             How Crowdfunding on Fledge Works
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            A deep dive into our crowdfunding platform and its integration with Flare's Time Series Oracle (FTSO)
+            A deep dive into our crowdfunding platform and its integration with Flare&apos;s Time Series Oracle (FTSO)
           </p>
         </motion.div>
 
@@ -53,11 +53,11 @@ export default function About() {
               <div className="prose prose-lg max-w-none prose-p:text-gray-600 prose-headings:text-gray-900">
                 <p className="text-lg leading-relaxed">
                   Our crowdfunding platform makes it easy to create and manage fundraising campaigns on the Flare network. 
-                  What makes it special is how it uses Flare's Time Series Oracle (FTSO) to keep track of FLR token prices in real-time.
+                  What makes it special is how it uses Flare&apos;s Time Series Oracle (FTSO) to keep track of FLR token prices in real-time.
                 </p>
                 <p className="text-lg leading-relaxed">
                   When you create a campaign, you set your funding goal in USD. The platform automatically converts this to FLR 
-                  using current market prices from FTSO. This means your campaign's progress is always accurate, regardless of 
+                  using current market prices from FTSO. This means your campaign&apos;s progress is always accurate, regardless of 
                   FLR price fluctuations.
                 </p>
                 <p className="text-lg leading-relaxed">
@@ -89,7 +89,7 @@ export default function About() {
               <div className="prose prose-lg max-w-none prose-p:text-gray-600 prose-headings:text-gray-900">
                 <h3 className="text-2xl font-semibold text-gray-900 mb-4">FTSO Integration</h3>
                 <p className="text-lg leading-relaxed mb-6">
-                  The platform integrates with Flare's FTSO through the following key components:
+                  The platform integrates with Flare&apos;s FTSO through the following key components:
                 </p>
                 <ul className="space-y-4 mb-8">
                   <li className="flex items-start gap-3">
@@ -97,7 +97,7 @@ export default function About() {
                       <span className="text-sm font-semibold">1</span>
                     </div>
                     <div>
-                      <strong className="text-gray-900">Price Feed Integration:</strong> The smart contract uses FTSO's FLR/USD price feed (ID: 0x01464c522f55534400000000000000000000000000) 
+                      <strong className="text-gray-900">Price Feed Integration:</strong> The smart contract uses FTSO&apos;s FLR/USD price feed (ID: 0x01464c522f55534400000000000000000000000000) 
                       to get real-time price data.
                     </div>
                   </li>
@@ -195,7 +195,7 @@ export default function About() {
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-3">Contribute</h3>
                   <p className="text-gray-600 mb-4">
-                    Send FLR tokens to support campaigns. Your contribution's USD value is calculated using real-time FTSO data.
+                    Send FLR tokens to support campaigns. Your contribution&apos;s USD value is calculated using real-time FTSO data.
                   </p>
                   <Link 
                     href="/campaigns"
@@ -211,7 +211,7 @@ export default function About() {
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-3">Track Progress</h3>
                   <p className="text-gray-600 mb-4">
-                    Monitor your campaign's progress with real-time updates on contributions and FLR/USD price movements.
+                    Monitor your campaign&apos;s progress with real-time updates on contributions and FLR/USD price movements.
                   </p>
                   <Link 
                     href="/campaigns"
